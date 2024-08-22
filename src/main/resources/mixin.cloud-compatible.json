@@ -1,0 +1,9 @@
+{
+  "package": "me.huanmeng.kookbc.cloudcompatible.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8",
+  "mixins": [
+    "KBCClientMixin",
+    "UserClickButtonListenerMixin"
+  ]
+}
