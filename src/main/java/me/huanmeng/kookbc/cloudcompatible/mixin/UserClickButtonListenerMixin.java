@@ -44,9 +44,9 @@ public class UserClickButtonListenerMixin {
      * @author
      * @reason
      */
-    @Overwrite(remap = false)
     @EventHandler(internal = true)
-    public void event(UserClickButtonEvent event, CallbackInfo ci) {
+    @Overwrite(remap = false)
+    public void event(UserClickButtonEvent event) {
         String value = event.getValue();
         if (!value.startsWith(HELP_VALUE_HEADER)) {
             return;
