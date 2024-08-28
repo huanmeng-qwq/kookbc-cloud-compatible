@@ -1,6 +1,6 @@
 name: CloudCompatible
 main: me.huanmeng.kookbc.cloudcompatible.CloudCompatible
-version: 1.0
+version: 1.0.2
 api-version: 0.52
 description: Support modern KookBC to support cloud frameworks
 authors: [ huanmeng_qwq ]

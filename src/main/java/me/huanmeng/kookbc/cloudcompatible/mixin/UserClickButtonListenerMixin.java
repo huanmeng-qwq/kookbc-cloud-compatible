@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import snw.jkook.event.EventHandler;
 import snw.jkook.event.user.UserClickButtonEvent;
 import snw.jkook.message.Message;
@@ -28,7 +27,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static snw.kookbc.impl.command.internal.HelpCommand.HELP_VALUE_HEADER;
+import static snw.kookbc.impl.command.litecommands.internal.HelpCommand.HELP_VALUE_HEADER;
 
 @Mixin(value = UserClickButtonListener.class, remap = false)
 public class UserClickButtonListenerMixin {

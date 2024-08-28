@@ -17,7 +17,7 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    compileOnly("com.github.SNWCreations:KookBC:0.30.2")
+    compileOnly("com.github.SNWCreations:KookBC:0.31.0")
 
     // cloud dep
     implementation("cloud.commandframework:cloud-core:1.8.3")

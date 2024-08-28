@@ -48,8 +48,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static snw.kookbc.impl.command.internal.HelpCommand.EMPTY_PLAIN_TEXT_ELEMENT;
-import static snw.kookbc.impl.command.internal.HelpCommand.HELP_VALUE_HEADER;
+import static snw.kookbc.impl.command.litecommands.internal.HelpCommand.HELP_VALUE_HEADER;
 
 /**
  * @author huanmeng_qwq
@@ -58,6 +57,7 @@ import static snw.kookbc.impl.command.internal.HelpCommand.HELP_VALUE_HEADER;
 @CommandPrefix("/")
 @CommandMethod("help")
 public class CloudHelpCommand {
+    private static final PlainTextElement EMPTY_PLAIN_TEXT_ELEMENT = new PlainTextElement(" ");
 
     private KBCClient client;
 

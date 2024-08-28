@@ -15,10 +15,10 @@ import snw.kookbc.impl.KBCClient;
 import snw.kookbc.impl.command.CommandManagerImpl;
 import snw.kookbc.impl.command.cloud.CloudCommandManagerImpl;
 import snw.kookbc.impl.command.internal.CloudHelpCommand;
+import snw.kookbc.impl.command.litecommands.internal.HelpCommand;
 import snw.kookbc.impl.entity.builder.EntityBuilder;
 import snw.kookbc.impl.entity.builder.MessageBuilder;
 import snw.kookbc.impl.event.EventFactory;
-import snw.kookbc.impl.event.internal.UserClickButtonListener;
 import snw.kookbc.impl.network.NetworkClient;
 import snw.kookbc.impl.plugin.InternalPlugin;
 import snw.kookbc.impl.storage.EntityStorage;
@@ -26,6 +26,8 @@ import snw.kookbc.interfaces.network.NetworkSystem;
 import snw.kookbc.util.ReturnNotNullFunction;
 
 import java.io.File;
+import java.util.List;
+import java.util.Objects;
 
 @Mixin(value = KBCClient.class, remap = false)
 public class KBCClientMixin {
@@ -62,16 +64,11 @@ public class KBCClientMixin {
         }
     }
 
-    @SuppressWarnings("UnreachableCode")
-    @Inject(method = "registerHelpCommand", at = @At("HEAD"), remap = false, cancellable = true)
-    public void regHelp(CallbackInfo ci) {
-        if (commandManager instanceof CloudCommandManagerImpl) {
-            ci.cancel();
-            KBCClient self = (KBCClient) (Object) this;
-            ((CloudCommandManagerImpl) commandManager)
-                    .registerCloudCommand(internalPlugin, new CloudHelpCommand(self));
-            this.core.getEventManager()
-                    .registerHandlers(this.internalPlugin, new UserClickButtonListener(self));
-        }
+    @Inject(method = "registerCommands", at = @At("HEAD"))
+    public void registerCommands(List<Class<?>> commands, CallbackInfo ci) {
+        commands.removeIf(clazz -> Objects.equals(clazz, HelpCommand.class));
+        KBCClient self = (KBCClient) (Object) this;
+        ((CloudCommandManagerImpl) commandManager)
+                .registerCloudCommand(internalPlugin, new CloudHelpCommand(self));
     }
 }
